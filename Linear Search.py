@@ -1,22 +1,27 @@
-# defining varibles 
-array = list(map(int,input("enter the numbers - ").split()))
-key = int(input("enter the key - "))
+# Linear Search Program
 
-# linear searching method 1
+def linear_search(arr, key):
+    """
+    Performs linear search on the list `arr` to find `key`.
+    Returns True if key is found, False otherwise.
+    """
+    for index, value in enumerate(arr):
+        if value == key:
+            return index  # return index of found key
+    return -1  # key not found
 
-if key in array: 
-    print("key exists")
-else:
-    print("it does not exist")
 
-# linear searching method 2 
+# Main program
+try:
+    array = list(map(int, input("Enter the numbers (space-separated): ").split()))
+    key = int(input("Enter the key to search for: "))
 
-for i in range(0,len(array)):
-    if array[i] == key:
-        print("key exists")
+    result = linear_search(array, key)
 
-#method 3 
-for num in array:
-    if key == num:
-        print("key exists")      
-#time complexity O(n)
+    if result != -1:
+        print(f"✅ Key {key} exists at index {result}.")
+    else:
+        print(f"❌ Key {key} does not exist in the list.")
+
+except ValueError:
+    print("⚠️ Invalid input! Please enter integers only.")
